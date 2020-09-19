@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { Link, StaticQuery, graphql } from 'gatsby'
@@ -23,6 +23,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const instagramUrl = `https://www.instagram.com/samboyy_/`
     // const instagramUrl = site.instagram ? `https://instagram.com/${site.instagram.replace(/^@/, ``)}` : null
     const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}` : null
+    const [navActive, setNavActive] = useState(false)
 
     return (
         <>
@@ -52,6 +53,13 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     <div className="site-mast-right">
                                         { instagramUrl && <a href={ instagramUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/instagram.svg" alt="Instagram" /></a>}
                                         { site.facebook && <a href={ facebookUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/facebook.svg" alt="Facebook" /></a>}
+                                        <nav className="site-mobile-nav">
+                                            <button htmlFor="menu" className={`site-mobile-nav__toggle ${navActive ? `active` : ``} `} onClick={() => setNavActive(!navActive)}>
+                                                <img className="site-nav-icon menu" src="/images/icons/menu.svg" alt="Menu"/>
+                                                <img className="site-nav-icon cancel" src="/images/icons/cancel.svg" alt="Menu"/>
+                                            </button>
+                                            <Navigation data={site.navigation} navClass="site-nav-button" />
+                                        </nav>
                                     </div>
                                 </div>
                                 { isHome ?

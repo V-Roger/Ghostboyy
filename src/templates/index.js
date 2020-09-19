@@ -17,6 +17,12 @@ import { MetaData } from '../components/common/meta'
 */
 const Index = ({ data, location, pageContext }) => {
     const posts = data.allGhostPost.edges
+    const breakpointColumnsObj = {
+        default: 4,
+        1100: 3,
+        700: 2,
+        500: 1,
+    }
 
     return (
         <>
@@ -25,7 +31,7 @@ const Index = ({ data, location, pageContext }) => {
                 <div className="container">
                     <SRLWrapper>
                         <Masonry
-                            breakpointCols={3}
+                            breakpointCols={breakpointColumnsObj}
                             className="my-masonry-grid"
                             columnClassName="my-masonry-grid_column">
                             {posts.map(({ node }) => (
