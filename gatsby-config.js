@@ -184,6 +184,14 @@ module.exports = {
                 addUncaughtPages: true,
             },
         },
+        {
+            resolve: `gatsby-source-stripe`,
+            options: {
+                objects: [`Product`, `Price`],
+                secretKey: `rk_test_51HSkjEESwcpNJaCz2OXhcbruHjJ2OTpBuyGu0tK4IRaiGKgQ13DaSr59GiSWHjm8ECXxkDXlFxZl9Mg5Cv8R3FBA00mwjsyuLn`,
+                downloadFiles: true,
+            },
+        },
         `gatsby-plugin-catch-links`,
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-force-trailing-slashes`,

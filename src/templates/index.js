@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import Masonry from 'react-masonry-css'
 
 import { Layout, PostCard, Pagination } from '../components/common'
 import { MetaData } from '../components/common/meta'
@@ -21,12 +22,15 @@ const Index = ({ data, location, pageContext }) => {
             <MetaData location={location} />
             <Layout isHome={true}>
                 <div className="container">
-                    <section className="post-feed">
+                    <Masonry
+                        breakpointCols={3}
+                        className="my-masonry-grid"
+                        columnClassName="my-masonry-grid_column">
                         {posts.map(({ node }) => (
                             // The tag below includes the markup for each post - components/common/PostCard.js
                             <PostCard key={node.id} post={node} />
                         ))}
-                    </section>
+                    </Masonry>
                     <Pagination pageContext={pageContext} />
                 </div>
             </Layout>
