@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import { StickyContainer, Sticky } from 'react-sticky'
-import Img from 'gatsby-image'
+import SimpleReactLightbox from "simple-react-lightbox"
 
 import { Navigation } from '.'
 
@@ -31,68 +31,69 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <style type="text/css">{`${site.codeinjection_styles}`}</style>
                 <body className={bodyClass} />
             </Helmet>
-            <StickyContainer>
+            
+            <SimpleReactLightbox>
+                <StickyContainer>
+                    <div className="viewport">
+                        <div className="viewport-top">
 
-                <div className="viewport">
-                    <div className="viewport-top">
-
-                        {/* The main header section on top of the screen */}
-                        <header className="site-head" style={{ ...site.cover_image && { backgroundImage: `url(${site.cover_image})` } }}>
-                            <div className="site-mast">
-                                <div className="site-mast-left">
-                                    <Link to="/">
-                                        {/* {site.logo ?
-                                                <img className="site-logo" src={site.logo} alt={site.title} />
-                                                : <Img fixed={data.file.childImageSharp.fixed} alt={site.title} />
-                                            } */}
-                                        <h1 className="site-banner-title">{site.title}</h1>
-                                    </Link>
+                            {/* The main header section on top of the screen */}
+                            <header className="site-head" style={{ ...site.cover_image && { backgroundImage: `url(${site.cover_image})` } }}>
+                                <div className="site-mast">
+                                    <div className="site-mast-left">
+                                        <Link to="/">
+                                            {/* {site.logo ?
+                                                    <img className="site-logo" src={site.logo} alt={site.title} />
+                                                    : <Img fixed={data.file.childImageSharp.fixed} alt={site.title} />
+                                                } */}
+                                            <h1 className="site-banner-title">{site.title}</h1>
+                                        </Link>
+                                    </div>
+                                    <div className="site-mast-right">
+                                        { instagramUrl && <a href={ instagramUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/instagram.svg" alt="Instagram" /></a>}
+                                        { site.facebook && <a href={ facebookUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/facebook.svg" alt="Facebook" /></a>}
+                                    </div>
                                 </div>
-                                <div className="site-mast-right">
-                                    { instagramUrl && <a href={ instagramUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/instagram.svg" alt="Instagram" /></a>}
-                                    { site.facebook && <a href={ facebookUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/facebook.svg" alt="Facebook" /></a>}
+                                { isHome ?
+                                    <div className="site-banner">
+                                        {/* <p className="site-banner-desc">{site.description}</p> */}
+                                    </div> :
+                                    null}
+                                <Sticky topOffset={600}>
+                                    {({ style }) => (
+                                        <nav className="site-nav" style={style}>
+                                            <div className="site-nav-left">
+                                                <Navigation data={site.navigation} navClass="site-nav-button" />
+                                            </div>
+                                        </nav>
+                                    )}
+                                </Sticky>
+                            </header>
+
+                            <main className="site-main">
+                                {/* All the main content gets inserted here, index.js, post.js */}
+                                {children}
+                            </main>
+
+                        </div>
+
+                        <div className="viewport-bottom">
+                            {/* The footer at the very bottom of the screen */}
+                            <footer className="site-foot">
+                                <div className="site-foot-nav container">
+                                    <div className="site-foot-nav-left">
+                                        <Link to="/">{site.title}</Link> © 2019 &mdash; Published with <a className="site-foot-nav-item" href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a>
+                                    </div>
+                                    <div className="site-foot-nav-right">
+                                        <Navigation data={site.navigation} navClass="site-foot-nav-item" />
+                                    </div>
                                 </div>
-                            </div>
-                            { isHome ?
-                                <div className="site-banner">
-                                    {/* <p className="site-banner-desc">{site.description}</p> */}
-                                </div> :
-                                null}
-                            <Sticky topOffset={600}>
-                                {({ style }) => (
-                                    <nav className="site-nav" style={style}>
-                                        <div className="site-nav-left">
-                                            <Navigation data={site.navigation} navClass="site-nav-button" />
-                                        </div>
-                                    </nav>
-                                )}
-                            </Sticky>
-                        </header>
+                            </footer>
 
-                        <main className="site-main">
-                            {/* All the main content gets inserted here, index.js, post.js */}
-                            {children}
-                        </main>
-
+                        </div>
                     </div>
-
-                    <div className="viewport-bottom">
-                        {/* The footer at the very bottom of the screen */}
-                        <footer className="site-foot">
-                            <div className="site-foot-nav container">
-                                <div className="site-foot-nav-left">
-                                    <Link to="/">{site.title}</Link> © 2019 &mdash; Published with <a className="site-foot-nav-item" href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a>
-                                </div>
-                                <div className="site-foot-nav-right">
-                                    <Navigation data={site.navigation} navClass="site-foot-nav-item" />
-                                </div>
-                            </div>
-                        </footer>
-
-                    </div>
-                </div>
-            </StickyContainer>
-
+                </StickyContainer>
+            </SimpleReactLightbox>
         </>
     )
 }

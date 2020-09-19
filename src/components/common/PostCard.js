@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import { Tags } from '@tryghost/helpers-gatsby'
-import { readingTime as readingTimeHelper } from '@tryghost/helpers'
+// import { Tags } from '@tryghost/helpers-gatsby'
+// import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 
 const PostCard = ({ post }) => {
     const url = `/${post.slug}/`
@@ -12,12 +12,11 @@ const PostCard = ({ post }) => {
         <Link to={url} className="post-card">
             <header className="post-card-header">
                 {post.feature_image &&
-                    <div className="post-card-image" style={{
-                        backgroundImage: `url(${post.feature_image})` ,
-                    }}></div>}
+                    <img src={post.feature_image} alt={post.title} className="post-card-image"/>
+                }
                 {/* {post.tags && <div className="post-card-tags"> <Tags post={post} visibility="public" autolink={false} /></div>} */}
                 {/* {post.featured && <span>Featured</span>} */}
-                <h2 className="post-card-title">{post.title}</h2>
+                {/* <h2 className="post-card-title">{post.title}</h2> */}
             </header>
             {/* <section className="post-card-excerpt">{post.excerpt}</section>
             <footer className="post-card-footer">
