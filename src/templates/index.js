@@ -23,13 +23,31 @@ const Index = ({ data, location, pageContext }) => {
         700: 2,
         500: 1,
     }
+    const srlOptions = {
+        settings: {
+            overlayColor: `#fff`,
+            transitionSpeed: 200,
+        },
+        buttons: {
+            showAutoplayButton: false,
+            showDownloadButton: false,
+        },
+        thumbnails: {
+            showThumbnails: false,
+        },
+        caption: {
+            captionColor: `#15171A`,
+        },
+    }
 
     return (
         <>
             <MetaData location={location} />
             <Layout isHome={true}>
                 <div className="container">
-                    <SRLWrapper>
+                    <SRLWrapper
+                        options={srlOptions}
+                    >
                         <Masonry
                             breakpointCols={breakpointColumnsObj}
                             className="my-masonry-grid"
