@@ -7,26 +7,25 @@ const ContactPage = () => (
             <article className="content">
                 <h1 className="content-title">Contact</h1>
                 <section className="content-body">
-                    <p>Coucou</p>
-                    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+                    <form action="/succes" name="contact" netlify netlify-honeypot="bot-field" hidden>
                         <input type="text" name="name" />
                         <input type="email" name="email" />
                         <textarea name="message"></textarea>
                     </form>
-                    <form name="contact" method="post">
+                    <form action="/succes" className="contact-form" name="contact" method="post">
                         <input type="hidden" name="form-name" value="contact" />
-                        <p>
-                            <label>Your Name: <input type="text" name="name"/></label>
-                        </p>
-                        <p>
-                            <label>Your Email: <input type="email" name="email"/></label>
-                        </p>
-                        <p>
-                            <label>Message: <textarea name="message"></textarea></label>
-                        </p>
-                        <p>
-                            <button type="submit">Send</button>
-                        </p>
+                        <div className="form-group">
+                            <label>Votre nom
+                                <input type="text" name="name"/>
+                            </label>
+                            <label>Votre email
+                                <input type="email" name="email"/>
+                            </label>
+                        </div>
+                        <div className="form-group">
+                            <label>Votre message<textarea name="message"></textarea></label>
+                        </div>
+                        <button type="submit">Envoyer</button>
                     </form>
                 </section>
             </article>
