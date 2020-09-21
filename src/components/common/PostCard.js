@@ -4,12 +4,20 @@ import { Link } from 'gatsby'
 // import { Tags } from '@tryghost/helpers-gatsby'
 // import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, hoverState, onHover }) => {
     const url = `/${post.slug}/`
     // const readingTime = readingTimeHelper(post)
+    const handleMouseOver = function (event) {
+        event.preventDefault()
+        onHover(post.id)
+    }
+    const handleMouseLeave = function (event) {
+        event.preventDefault()
+        onHover(undefined)
+    }
 
     return (
-        <Link to={url} className="post-card">
+        <Link onMouseEnter={ handleMouseOver } onMouseLeave={ handleMouseLeave} to={url} className={ `post-card ${hoverState}`}>
             <header className="post-card-header">
                 {post.feature_image &&
                     <img src={post.feature_image} alt={post.title} className="post-card-image"/>
@@ -38,7 +46,10 @@ const PostCard = ({ post }) => {
 }
 
 PostCard.propTypes = {
+    onHover: PropTypes.func,
+    hoverState: PropTypes.string,
     post: PropTypes.shape({
+        id: PropTypes.any,
         slug: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         feature_image: PropTypes.string,

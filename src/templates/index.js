@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Masonry from 'react-masonry-css'
@@ -16,6 +16,7 @@ import { MetaData } from '../components/common/meta'
 *
 */
 const Index = ({ data, location, pageContext }) => {
+    const [overPost, setOverPost] = useState(undefined);
     const posts = data.allGhostPost.edges
     const breakpointColumnsObj = {
         default: 4,
@@ -39,7 +40,9 @@ const Index = ({ data, location, pageContext }) => {
             captionColor: `#15171A`,
         },
     }
-    const orderedPosts = posts.sort((a,b) => (a.node.featured && !b.node.featured ? -1 : 1))
+    const hoverPost = function (id) {
+        setOverPost(id)
+    }
 
     return (
         <>
@@ -53,8 +56,8 @@ const Index = ({ data, location, pageContext }) => {
                             breakpointCols={breakpointColumnsObj}
                             className="my-masonry-grid"
                             columnClassName="my-masonry-grid_column">
-                            {orderedPosts.map(({ node }) => (
-                                <PostCard key={node.id} post={node} />
+                            {posts.sort(({ node: aNode }, { node: bNode }) => aNode.featured && -1 || bNode.featured && 1 || 0).map(({ node }) => (
+                                <PostCard onHover={ hoverPost } hoverState={ (!overPost || node.id === overPost) ? `active` : `muted` } key={node.id} post={node} />
                             ))}
                         </Masonry>
                     </SRLWrapper>

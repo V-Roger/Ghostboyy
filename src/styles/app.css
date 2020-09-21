@@ -855,6 +855,11 @@ h6 {
 .post-card {
     color: inherit;
     text-decoration: none;
+    transition: opacity 120ms ease-in;
+}
+
+.post-card.muted {
+    opacity: 0.5;
 }
 
 .post-card:hover {
