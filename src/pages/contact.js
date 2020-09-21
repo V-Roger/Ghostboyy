@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Layout } from '../components/common'
 
-const ContactPage = () => (
-    <Layout>
+const ContactPage = () => {
+    const [name, setName] = useState(undefined)
+    const [email, setEmail] = useState(undefined)
+    const [message, setMessage] = useState(undefined)
+
+    const handleInput = function (event, callback) {
+        event.preventDefault()
+        callback(event.target.value)
+    }
+
+    return (<Layout>
         <div className="container">
             <article className="content">
                 <h1 className="content-title">Contact</h1>
@@ -16,21 +25,21 @@ const ContactPage = () => (
                         <input type="hidden" name="form-name" value="contact" />
                         <div className="form-group">
                             <label>Votre nom
-                                <input type="text" name="name"/>
+                                <input type="text" name="name" required onChange={e => handleInput(e, setName)} />
                             </label>
                             <label>Votre email
-                                <input type="email" name="email"/>
+                                <input type="email" name="email" required onChange={e => handleInput(e, setEmail)} />
                             </label>
                         </div>
                         <div className="form-group">
-                            <label>Votre message<textarea name="message"></textarea></label>
+                            <label>Votre message<textarea name="message" required onChange={e => handleInput(e, setMessage)}/></label>
                         </div>
-                        <button type="submit">Envoyer</button>
+                        <button disabled={(name && email && message) ? false : true } type="submit">Envoyer</button>
                     </form>
                 </section>
             </article>
         </div>
-    </Layout>
-)
+    </Layout>)
+}
 
 export default ContactPage

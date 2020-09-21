@@ -828,7 +828,7 @@ h6 {
 /* ---------------------------------------------------------- */
 
 .site-main {
-    padding: 8vw 0;
+    padding: 4vw 0;
 }
 
 /* Index
@@ -1283,4 +1283,10 @@ background-clip: padding-box;
     margin: 15px;
     background: transparent;
     border: none;
+    text-decoration: underline;
+}
+
+.contact-form button[disabled] {
+    opacity: 0.5;
+    text-decoration: none;
 }
