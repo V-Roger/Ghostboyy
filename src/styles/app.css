@@ -1251,14 +1251,14 @@ background-clip: padding-box;
 .form-group {
     width: 100%;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-evenly;
     margin: 10px 0;
 }
 
 .form-group label {
     display: flex;
-    flex: 1 1 100%;
+    flex: 1 1 50%;
     flex-flow: column nowrap;
     padding: 0 15px;
 }

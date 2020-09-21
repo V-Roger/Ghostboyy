@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { Layout } from '../components/common'
 
 const FormSuccessPage = () => (
@@ -8,7 +7,7 @@ const FormSuccessPage = () => (
             <article className="content" style={{ textAlign: `center` }}>
                 <h1 className="content-title">YAY</h1>
                 <section className="content-body">
-                  Pigeon voyageur en route ;)
+                    Pigeon voyageur en route ;)
                 </section>
             </article>
         </div>
