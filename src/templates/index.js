@@ -39,6 +39,7 @@ const Index = ({ data, location, pageContext }) => {
             captionColor: `#15171A`,
         },
     }
+    const orderedPosts = posts.sort((a,b) => a.featured && !b.featured)
 
     return (
         <>
@@ -52,7 +53,7 @@ const Index = ({ data, location, pageContext }) => {
                             breakpointCols={breakpointColumnsObj}
                             className="my-masonry-grid"
                             columnClassName="my-masonry-grid_column">
-                            {posts.map(({ node }) => (
+                            {orderedPosts.map(({ node }) => (
                                 // The tag below includes the markup for each post - components/common/PostCard.js
                                 <PostCard key={node.id} post={node} />
                             ))}
