@@ -1,10 +1,10 @@
 {
   "development": {
-    "apiUrl": "https://ghostboyy.herokuapp.com",
-    "contentApiKey": "5a205efbdd80a9a9a95c27056c "
+    "apiUrl": "https://samboyy.herokuapp.com",
+    "contentApiKey": "13c08517f22aa3714264caab0a"
   },
   "production": {
-    "apiUrl": "https://ghostboyy.herokuapp.com",
-    "contentApiKey": "5a205efbdd80a9a9a95c27056c "
+    "apiUrl": "https://samboyy.herokuapp.com",
+    "contentApiKey": "13c08517f22aa3714264caab0a"
   }
 }

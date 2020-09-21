@@ -664,7 +664,7 @@ h6 {
 .site-head {
     color: var(--color-base);
     background: var(--color-bg);
-    background-position: center;
+    background-position: bottom;
     background-size: cover;
     background-attachment: fixed;
 }
