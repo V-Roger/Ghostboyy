@@ -16,7 +16,7 @@ import { MetaData } from '../components/common/meta'
 *
 */
 const Index = ({ data, location, pageContext }) => {
-    const [overPost, setOverPost] = useState(undefined);
+    const [overPost, setOverPost] = useState(undefined)
     const posts = data.allGhostPost.edges
     const breakpointColumnsObj = {
         default: 4,

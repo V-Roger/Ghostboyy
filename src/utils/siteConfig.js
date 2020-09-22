@@ -1,7 +1,7 @@
 module.exports = {
     siteUrl: `https://clever-sammet-2121a3.netlify.app:8000`, // Site domain. Do not include a trailing slash!
 
-    postsPerPage: 12, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
+    postsPerPage: 30, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
 
     siteTitleMeta: `Samboyy`, // This allows an alternative site title for meta data for pages.
     siteDescriptionMeta: `Samboyy`, // This allows an alternative site description for meta data for pages.
