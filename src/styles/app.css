@@ -831,6 +831,12 @@ h6 {
     padding: 4vw 0;
 }
 
+@media screen and (max-width: 800px) {
+    .site-main {
+        padding-top: 120px;
+    }
+}
+
 /* Index
 /* ---------------------------------------------------------- */
 
