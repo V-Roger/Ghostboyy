@@ -5,9 +5,9 @@ const FormSuccessPage = () => (
     <Layout>
         <div className="container">
             <article className="content" style={{ textAlign: `center` }}>
-                <h1 className="content-title">YAY</h1>
+                <h1 className="content-title">YAY 🎉</h1>
                 <section className="content-body">
-                    Pigeon voyageur en route ;)
+                    Le pigeon voyageur est en route ;)
                 </section>
             </article>
         </div>

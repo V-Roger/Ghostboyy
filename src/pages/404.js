@@ -6,9 +6,14 @@ const NotFoundPage = () => (
     <Layout>
         <div className="container">
             <article className="content" style={{ textAlign: `center` }}>
-                <h1 className="content-title">Error 404</h1>
+                <h1 className="content-title">Zut de zut :(</h1>
                 <section className="content-body">
-                    Page not found, <Link to="/">return home</Link> to start over
+                    <b>
+                        Je n&apos;ai pas encore dessiné cette page !
+                    </b>
+                    <p>
+                        C'est un bon moment pour retourner <Link to="/">à l&apos;accueil.</Link>
+                    </p>
                 </section>
             </article>
         </div>
