@@ -59,7 +59,7 @@ PostCard.propTypes = {
                 name: PropTypes.string,
             })
         ),
-        excerpt: PropTypes.string.isRequired,
+        excerpt: PropTypes.string,
         primary_author: PropTypes.shape({
             name: PropTypes.string.isRequired,
             profile_image: PropTypes.string,

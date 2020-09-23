@@ -5,7 +5,7 @@ import { Link, StaticQuery, graphql } from 'gatsby'
 import { StickyContainer, Sticky } from 'react-sticky'
 import SimpleReactLightbox from "simple-react-lightbox"
 
-import { Navigation } from '.'
+import { Navigation, Maintenance } from '.'
 
 // Styles
 import '../../styles/app.css'
@@ -27,6 +27,14 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const [navActive, setNavActive] = useState(false)
     const today = new Date()
 
+    if (data.site.siteMetadata.maintenanceMode) {
+        return (
+            <>
+                <Maintenance siteData={data} />
+            </>
+        )
+    }
+
     return (
         <>
             <Helmet>
@@ -46,10 +54,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 <div className="site-mast">
                                     <div className="site-mast-left">
                                         <Link to="/">
-                                            {/* {site.logo ?
-                                                    <img className="site-logo" src={site.logo} alt={site.title} />
-                                                    : <Img fixed={data.file.childImageSharp.fixed} alt={site.title} />
-                                                } */}
                                             <h1 className="site-banner-title">{site.title}</h1>
                                         </Link>
                                     </div>
@@ -114,8 +118,8 @@ DefaultLayout.propTypes = {
     bodyClass: PropTypes.string,
     isHome: PropTypes.bool,
     data: PropTypes.shape({
-        file: PropTypes.object,
         allGhostSettings: PropTypes.object.isRequired,
+        site: PropTypes.any,
     }).isRequired,
 }
 
@@ -130,11 +134,9 @@ const DefaultLayoutSettingsQuery = props => (
                         }
                     }
                 }
-                file(relativePath: {eq: "ghost-icon.png"}) {
-                    childImageSharp {
-                        fixed(width: 30, height: 30) {
-                            ...GatsbyImageSharpFixed
-                        }
+                site {
+                    siteMetadata {
+                        maintenanceMode
                     }
                 }
             }
