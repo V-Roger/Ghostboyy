@@ -27,13 +27,13 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const [navActive, setNavActive] = useState(false)
     const today = new Date()
 
-    // if (data.site.siteMetadata.maintenanceMode) {
-    //     return (
-    //         <>
-    //             <Maintenance siteData={data} />
-    //         </>
-    //     )
-    // }
+    if (data.site.siteMetadata.maintenanceMode) {
+        return (
+            <>
+                <Maintenance siteData={data} />
+            </>
+        )
+    }
 
     return (
         <>
