@@ -15,7 +15,10 @@ try {
         },
     }
 } finally {
-    const { apiUrl, contentApiKey } = process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production
+    const {
+        apiUrl,
+        contentApiKey,
+    } = process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production
 
     if (!apiUrl || !contentApiKey || contentApiKey.match(/<key>/)) {
         throw new Error(`GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`) // eslint-disable-line
@@ -27,12 +30,12 @@ if (process.env.NODE_ENV === `production` && config.siteUrl === `http://localhos
 }
 
 /**
-* This is the place where you can tell Gatsby which plugins to use
-* and set them up the way you want.
-*
-* Further info 👉🏼 https://www.gatsbyjs.org/docs/gatsby-config/
-*
-*/
+ * This is the place where you can tell Gatsby which plugins to use
+ * and set them up the way you want.
+ *
+ * Further info 👉🏼 https://www.gatsbyjs.org/docs/gatsby-config/
+ *
+ */
 module.exports = {
     siteMetadata: {
         siteUrl: process.env.SITEURL || config.siteUrl,
@@ -62,10 +65,9 @@ module.exports = {
         `gatsby-transformer-sharp`,
         {
             resolve: `gatsby-source-ghost`,
-            options:
-                process.env.NODE_ENV === `development`
-                    ? ghostConfig.development
-                    : ghostConfig.production,
+            options: process.env.NODE_ENV === `development` ?
+                ghostConfig.development :
+                ghostConfig.production,
         },
         /**
          *  Utility Plugins
@@ -91,7 +93,7 @@ module.exports = {
                         }
                     }
                 }
-              `,
+            `,
             },
         },
         {
@@ -108,7 +110,7 @@ module.exports = {
                         }
                     }
                 }
-              `,
+            `,
                 feeds: [
                     generateRSSFeed(config),
                 ],
