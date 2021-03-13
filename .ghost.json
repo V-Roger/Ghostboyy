@@ -1,10 +1,10 @@
 {
   "development": {
-    "apiUrl": "https://admin.samboyy.com",
-    "contentApiKey": "a49f60b50443de4b327e21810b"
+    "apiUrl": "https://ghost.virgil-roger.photography",
+    "contentApiKey": "c875b74c59761dc0d439823de2"
   },
   "production": {
-    "apiUrl": "https://admin.samboyy.com",
-    "contentApiKey": "a49f60b50443de4b327e21810b"
+    "apiUrl": "https://ghost.virgil-roger.photography",
+    "contentApiKey": "c875b74c59761dc0d439823de2"
   }
 }
